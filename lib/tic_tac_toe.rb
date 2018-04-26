@@ -1,7 +1,8 @@
 class TicTacToe
 
 def initialize (board = nil)
-  
+
+  @board = board || Array.new(9, " ")
 
 end
 
@@ -75,9 +76,9 @@ end
     return nil
   end
 
-  def turn_count(board)
+  def turn_count
   counter = 0
-    board.each do |numba|
+    @board.each do |numba|
       if numba == "X" || numba == "O"
         counter +=1
       end
@@ -85,8 +86,8 @@ end
   return counter
   end
 
-  def current_player(board)
-    if turn_count(board) % 2 == 0
+  def current_player
+    if turn_count % 2 == 0
       return "X"
     else
       return "O"
@@ -136,7 +137,7 @@ end
 
   end
 
-  def display_board(board)
+  def display_board
     puts " #{@board[0]} | #{@board[1]} | #{@board[2]} "
     puts "-----------"
     puts " #{@board[3]} | #{@board[4]} | #{@board[5]} "
@@ -153,8 +154,11 @@ end
     board[index] = player_token
   end
 
-  def position_taken?(board, location)
-    board[location] != " " && board[location] != ""
+  def position_taken?(board, index)
+    if board[index] != " " && board[index] != ""
+      return true
+    else 
+      return false
   end
 
   def valid_move?(board, index)
