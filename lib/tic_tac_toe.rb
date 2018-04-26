@@ -157,7 +157,7 @@ end
   def position_taken?(board, index)
     if board[index] != " " && board[index] != ""
       return true
-    else 
+    else
       return false
   end
 
